@@ -1,0 +1,14 @@
+{
+  "name": "tp1-devops",
+  "version": "1.0.0",
+  "description": "App du TP1 - Réparer une image Docker cassée",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "build": "mkdir -p dist && cp /app/index.js dist/index.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "nodemon": "^3.0.0"
+  }
+}
