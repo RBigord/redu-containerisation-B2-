@@ -1,0 +1,12 @@
+{
+  "name": "taskflow-backend",
+  "version": "1.0.0",
+  "description": "API REST TaskFlow - gestion de taches avec Redis",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "ioredis": "^5.3.2"
+  }
+}

@@ -1,29 +1,17 @@
-FROM node:18
+FROM node:18-alpine
 
 WORKDIR /app
 
-# Clé API en dur dans l'image
-ENV API_KEY=sk-prod-abc123xyz456
-ENV DB_PASSWORD=supersecret123
-ENV DB_HOST=prod-db.monapp.com
+COPY package*.json ./
 
-# On copie tout le projet d'un coup
+RUN npm install --omit=dev
+
 COPY . .
 
-# On installe les dépendances APRÈS avoir copié le code
-# (le cache npm sera invalidé à chaque modification de code)
-RUN npm install
+RUN mkdir -p /app/data && chown node:node /app/data
 
-RUN npm run build
-
-RUN apt-get update && apt-get install -y \
-    curl \
-    wget \
-    vim \
-    git \
-    htop \
-    net-tools
+USER node
 
 EXPOSE 3000
 
-CMD ["node", "dist/index.js"]
+CMD ["node", "index.js"]
